@@ -28,16 +28,14 @@ public class Vista {
             leerMax += rango;
         }
 
-        for (int i = 0; i < arrayLectura.size() ; i++){
+        arrayLectura.forEach(LecturaConcurrente::start);
+
+        for (int i = 0; i < arrayLectura.size(); i++) {
             try {
-                arrayLectura.get(i).start();
                 arrayLectura.get(i).join();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        }
-
-        for (int i = 0; i < arrayLectura.size(); i++) {
             totalIngresos += arrayLectura.get(i).getIngresosThread();
         }
         System.out.println("Total ingresos: " +  totalIngresos);
@@ -45,7 +43,7 @@ public class Vista {
         //TIEMPO
         long end = System.currentTimeMillis();
         long time = end - start;
-        System.out.println("Ha tardado " + time + " segundos");
+        System.out.println("Ha tardado " + time + " milisegundos");
     }
 
     public int pedirNumero(){
