@@ -1,3 +1,5 @@
+package hilos;
+
 import java.sql.*;
 
 public class LecturaConcurrente extends Thread{
@@ -26,7 +28,6 @@ public class LecturaConcurrente extends Thread{
             Connection connection = DriverManager.getConnection(DB_CONNECTION, USER_NAME, USER_PASSWORD);
             Statement consulta = connection.createStatement();
             ResultSet registro = consulta.executeQuery("SELECT * FROM EMPLEADOS WHERE ID BETWEEN " + (leerStart+1) + " AND " + leerMax + ";");
-            //System.out.println("Thread: " + Thread.currentThread().getName() + " start " + leerStart + " max " + leerMax);
             while(registro.next()){
                System.out.println("ID: " + registro.getInt("ID") + " | Email: " + registro.getString("EMAIL") + " | Ingresos: " + registro.getInt("INGRESOS"));
                sumaIngresos += registro.getInt("INGRESOS");

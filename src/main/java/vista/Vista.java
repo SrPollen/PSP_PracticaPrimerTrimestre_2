@@ -1,3 +1,8 @@
+package vista;
+
+import connectionbd.Connectionbd;
+import hilos.LecturaConcurrente;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -27,7 +32,6 @@ public class Vista {
             leerStart = leerMax;
             leerMax += rango;
         }
-
         arrayLectura.forEach(LecturaConcurrente::start);
 
         for (int i = 0; i < arrayLectura.size(); i++) {

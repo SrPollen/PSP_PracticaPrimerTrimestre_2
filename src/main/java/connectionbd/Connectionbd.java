@@ -1,3 +1,5 @@
+package connectionbd;
+
 import java.sql.*;
 
 public class Connectionbd {
